@@ -525,19 +525,20 @@ Predictions from the machine-learning component should not be interpreted as med
 
 # 14. Project Links
 
+# Project Links
+
 ### GitHub Repository
 
-**https://github.com/aloks018/ML-Preprocessing-Feature-Selection**
+https://github.com/aloks018/ML-Preprocessing-Feature-Selection
 
 ### Google Colab Notebook
 
-**https://colab.research.google.com/drive/1xCTkheKnvXF7S1C3v95MANRvb4mI-mrg?usp=sharing**
+https://colab.research.google.com/drive/1xCTkheKnvXF7S1C3v95MANRvb4mI-mrg?usp=sharing
 
-### Raw Dataset
+### Official Kaggle Dataset
 
-**https://github.com/aloks018/ML-Preprocessing-Feature-Selection/blob/main/raw_dataset.csv**
+https://www.kaggle.com/datasets/ziya07/personalized-medical-diet-recommendations-dataset
 
----
 
 # 15. Author
 
