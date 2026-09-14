@@ -1,4 +1,4 @@
-# Project Graphs, Outputs and Accuracy -- Easy Teacher/Viva Explanation
+#  Graphs, Outputs and Accuracy 
 
 ## Project
 
@@ -9,9 +9,6 @@ This document explains the important graphs, tables, statistical
 outputs, preprocessing results, feature-selection decisions, and
 model-accuracy status from the uploaded `main_analysis.ipynb`.
 
-> **Important:** This explanation is based on the actual outputs and
-> code present in the uploaded notebook. It does not invent values that
-> are not present in the notebook.
 
 ------------------------------------------------------------------------
 
@@ -30,15 +27,6 @@ The notebook works with a dataset containing:
 The target is a categorical classification variable because the output
 is one of four meal-plan categories.
 
-### Simple teacher answer
-
-> "My dataset contains 5,000 patient observations and 30 columns. The
-> target variable is Recommended_Meal_Plan, which has four classes.
-> Before modeling, I performed data inspection, missing-value treatment,
-> duplicate checking, encoding, outlier analysis, scaling,
-> visualization, and statistical feature selection."
-
-------------------------------------------------------------------------
 
 # 2. First Five / Last Five Records
 
@@ -72,13 +60,6 @@ The dataset contains fields such as:
 -   Recommended nutrition values
 -   Recommended meal plan
 
-### Teacher answer
-
-> "I first inspected the first and last records to verify the dataset
-> structure and understand the types of variables before applying
-> preprocessing."
-
-------------------------------------------------------------------------
 
 # 3. Missing-Value Analysis
 
@@ -126,7 +107,7 @@ only**.
 
 This prevents **data leakage**.
 
-### Teacher answer
+### Output
 
 > "I did not blindly delete rows containing missing values. I used
 > median imputation for numerical variables and an Unknown/Not Reported
@@ -157,7 +138,7 @@ Therefore:
 If exact duplicate rows are present, the same observation can receive
 extra influence during analysis or model training.
 
-### Teacher answer
+### Output
 
 > "I checked exact duplicate records before modeling. The dataset
 > contains zero exact duplicates, so no records were removed."
@@ -188,7 +169,7 @@ notebook.
 These numerical limits are described in the notebook as a **diagnostic
 plausibility screen**, not as official medical limits.
 
-### Teacher answer
+### Output
 
 > "I used the invalid-data checks as diagnostic screening. I did not
 > automatically delete extreme values just because they looked unusual."
@@ -261,7 +242,7 @@ For one observation:
 
 It avoids creating an artificial ranking between nominal categories.
 
-### Teacher answer
+### Output
 
 > "I used one-hot encoding for nominal categorical variables because
 > categories such as cuisine types do not have a natural numerical
@@ -307,7 +288,7 @@ A real patient can legitimately have an unusually high or low BMI.
 Removing such observations without evidence could remove useful
 information.
 
-### Teacher answer
+### Output
 
 > "The IQR method flagged four BMI observations. I did not automatically
 > delete them because an outlier is not necessarily an error. I retained
@@ -342,7 +323,7 @@ The Z-score method uses the mean and standard deviation.
 
 Therefore, they can produce different results.
 
-### Teacher answer
+### Output
 
 > "I used both IQR and Z-score methods because they identify unusual
 > observations using different statistical principles. In my dataset,
@@ -380,7 +361,7 @@ The notebook treats transformation as something to investigate where
 appropriate. It does not blindly apply a log transformation to every
 variable.
 
-### Teacher answer
+### Output
 
 > "I checked skewness before transformation. BMI had positive skewness
 > of 0.4265, and the log1p demonstration reduced the absolute skewness
@@ -420,7 +401,7 @@ A value near:
 -   `0` → near the minimum
 -   `1` → near the maximum
 
-### Teacher answer
+### Output
 
 > "Min-Max normalization converts numerical values to a common 0-to-1
 > scale."
@@ -459,7 +440,7 @@ For example:
 -   Negative value → below the mean
 -   Near zero → close to the mean
 
-### Teacher answer
+### Output
 
 > "I used standardization so numerical variables with different units
 > and scales can be compared more fairly by transforming them to
@@ -501,7 +482,7 @@ A histogram helps identify:
 -   possible skewness;
 -   unusual distribution shape.
 
-### Teacher answer
+### Output
 
 > "The BMI histogram shows how the 5,000 observations are distributed
 > across BMI ranges. The x-axis contains BMI intervals and the y-axis
@@ -547,7 +528,7 @@ The box represents the middle 50% of the observations.
 
 It visually complements the IQR outlier analysis.
 
-### Teacher answer
+### Output
 
 > "The blood-sugar box plot gives a compact summary of the distribution.
 > It helps me see the median, quartile spread and possible extreme
@@ -585,7 +566,7 @@ It checks whether the target classes are reasonably distributed.
 If one class were much larger than the others, the dataset could be
 class-imbalanced.
 
-### Teacher answer
+### Output
 
 > "This bar chart shows the frequency of each meal-plan class. I use it
 > to understand the distribution of the classification target and to
@@ -629,7 +610,7 @@ If the points are widely scattered:
 
 > Weight alone does not completely determine BMI.
 
-### Teacher answer
+### Output
 
 > "The scatter plot is used to visually inspect the relationship between
 > weight and BMI. Each point is an observation, and the pattern tells us
@@ -689,7 +670,7 @@ Correlation is used here mainly to investigate **relationships between
 predictors**, not as the primary feature-target test, because the target
 is categorical.
 
-### Teacher answer
+### Output
 
 > "I use Pearson correlation to identify linear relationships and
 > possible redundancy among numerical predictors. A high absolute
@@ -719,7 +700,7 @@ predicting the target.
 Therefore, the notebook keeps varying features for further statistical
 analysis.
 
-### Teacher answer
+### Output
 
 > "Variance screening is mainly a first filter. Since the predictive
 > numerical features all varied, I did not remove them solely on the
@@ -743,7 +724,7 @@ The notebook defines a strong-correlation threshold of:
 If two features are highly correlated, the final feature-selection logic
 can remove the weaker one according to ANOVA evidence.
 
-### Teacher answer
+### Output
 
 > "When two numerical predictors are highly correlated, I avoid keeping
 > both automatically. I compare their ANOVA evidence and retain the
@@ -795,7 +776,7 @@ So it does not pass the strict p \< 0.05 criterion.
 The final selection still retains `Dietary_Habits` because the notebook
 explicitly adds the strongest categorical Mutual Information feature.
 
-### Teacher answer
+### Output
 
 > "Dietary_Habits had the strongest Chi-square evidence among
 > categorical predictors, but its p-value was 0.0647, which is slightly
@@ -845,7 +826,7 @@ The manual statistic matches the library verification statistic.
 
 This shows that the from-scratch calculation is consistent.
 
-### Teacher answer
+### Output
 
 > "I implemented the Chi-square calculation manually and then verified
 > the result using the statistical library. The statistic matched
@@ -900,7 +881,7 @@ Therefore the numerical features retained by ANOVA are:
 2.  `Protein_Intake`
 3.  `Weight_kg`
 
-### Teacher answer
+### Output
 
 > "For numerical predictors, I used ANOVA because the target is
 > categorical with multiple classes. BMI, Protein_Intake and Weight_kg
@@ -952,7 +933,7 @@ Because p \< 0.05, the notebook treats BMI as showing statistically
 meaningful differences across the target groups under the stated ANOVA
 selection rule.
 
-### Teacher answer
+### Output
 
 > "For BMI, the ANOVA F-statistic is 3.57474 and the p-value is
 > 0.013395. Since the p-value is below 0.05, BMI is retained."
@@ -997,7 +978,7 @@ The strongest categorical MI feature is:
 
 **Dietary_Habits = 0.00291661 bits**
 
-### Teacher answer
+### Output
 
 > "Mutual Information was used as an additional dependence measure for
 > categorical features. Dietary_Habits had the highest MI at about
@@ -1048,7 +1029,7 @@ However, it had the highest categorical MI:
 
 Therefore the final rule retained it.
 
-### Teacher answer
+### Output
 
 > "After combining the statistical screening rules, my final four
 > original features are Weight_kg, BMI, Protein_Intake and
@@ -1090,7 +1071,7 @@ This can make the model:
 -   computationally lighter;
 -   less exposed to irrelevant predictors.
 
-### Teacher answer
+### Output
 
 > "I reduced the predictive candidate set from 24 features to four
 > statistically supported original features. This gives a much simpler
@@ -1116,7 +1097,7 @@ model.
 
 `Patient_ID` is an identifier, not a meaningful predictive measurement.
 
-### Teacher answer
+### Output
 
 > "I removed the identifier and recommendation-derived columns before
 > feature selection and modeling to reduce the risk of data leakage."
@@ -1139,7 +1120,7 @@ The training data is used to learn preprocessing/feature information.
 
 The testing data is held out for evaluating generalization.
 
-### Teacher answer
+### Output
 
 > "I split the 5,000 records into 4,000 training observations and 1,000
 > testing observations, using an 80/20 split with random state 42."
@@ -1177,7 +1158,7 @@ Because:
 Therefore, four original features become seven numerical/encoded model
 columns.
 
-### Teacher answer
+### Output
 
 > "The final four original features become seven model columns after
 > one-hot encoding of Dietary_Habits. Both training and testing have
@@ -1211,7 +1192,7 @@ Categorical features become numerical through encoding.
 
 The four potential BMI IQR outliers are not automatically deleted.
 
-### Teacher answer
+### Output
 
 > "The preprocessing pipeline keeps all 5,000 observations, removes
 > missing values through training-based preprocessing, converts
@@ -1258,7 +1239,7 @@ report, or F1-score output in the uploaded notebook.
 
 unless that number comes from a separate model-training notebook/run.
 
-### Correct teacher answer for this uploaded notebook
+### Correct Output
 
 > "This notebook focuses on preprocessing and feature selection. It
 > prepares the final training and testing matrices, but model training
@@ -1279,7 +1260,7 @@ This is a better answer than inventing an accuracy value.
 
 ------------------------------------------------------------------------
 
-# 33. Quick Graph Guide for Viva
+# 33.  Graph Guide 
 
   -----------------------------------------------------------------------
   Graph             X-axis            Y-axis            Main Purpose
@@ -1305,7 +1286,7 @@ This is a better answer than inventing an accuracy value.
 
 ------------------------------------------------------------------------
 
-# 34. Quick Statistical-Test Guide
+# 34.  Statistical-Test Guide
 
   -------------------------------------------------------------------------
   Technique               Used For                Main Purpose
@@ -1328,111 +1309,10 @@ This is a better answer than inventing an accuracy value.
                           implementation          
   -------------------------------------------------------------------------
 
-------------------------------------------------------------------------
-
-# 35. Most Important Numbers to Remember
-
-For viva, remember these:
-
-### Dataset
-
--   **5,000 rows**
--   **30 columns**
--   **4 target classes**
-
-### Missing values
-
--   Chronic_Disease: **2043 (40.86%)**
--   Allergies: **3497 (69.94%)**
--   Food_Aversions: **1225 (24.50%)**
--   Total raw missing values: **6765**
-
-### Duplicates
-
--   **0 exact duplicates**
-
-### Outliers
-
--   IQR: **4 BMI outliers**
--   Z-score \|Z\| \> 3: **0**
-
-### Transformation
-
--   BMI skewness: **0.4265**
--   BMI log1p skewness: **-0.1447**
-
-### Train/Test
-
--   Training: **4000**
--   Testing: **1000**
--   Split: **80/20**
--   Random state: **42**
-
-### ANOVA selected numerical features
-
--   BMI: **p = 0.013395**
--   Protein_Intake: **p = 0.027279**
--   Weight_kg: **p = 0.047879**
-
-### Strongest categorical MI
-
--   Dietary_Habits: **0.00291661 bits**
-
-### Final selected original features
-
--   **Weight_kg**
--   **BMI**
--   **Protein_Intake**
--   **Dietary_Habits**
-
-### Final model matrix
-
--   Training: **4000 × 7**
--   Testing: **1000 × 7**
-
-### Accuracy
-
--   **Not calculated in the uploaded notebook**
 
 ------------------------------------------------------------------------
 
-# 36. One-Minute Complete Explanation to Teacher
 
-> "My project is about preprocessing and feature selection for
-> personalized diet recommendation. The dataset contains 5,000
-> observations and 30 columns, with Recommended_Meal_Plan as the
-> four-class target. I first inspected the data and identified missing
-> values mainly in Chronic_Disease, Allergies and Food_Aversions. I
-> handled numerical missing values using training-set median imputation
-> and categorical missing values using Unknown/Not Reported.
->
-> I checked duplicates and found zero exact duplicates. I also checked
-> invalid values and possible outliers. The IQR method detected four BMI
-> outliers, but I retained them after plausibility checking because
-> statistical extremeness does not automatically mean an observation is
-> invalid.
->
-> I demonstrated label encoding and one-hot encoding, and I used scaling
-> methods including Min-Max normalization and standardization. I also
-> created a histogram, box plot, class-distribution bar chart,
-> Weight-versus-BMI scatter plot and Pearson correlation heatmap.
->
-> For feature selection, I used variance, Pearson correlation,
-> Chi-square, ANOVA and Mutual Information. ANOVA selected BMI,
-> Protein_Intake and Weight_kg because their p-values were below 0.05.
-> Dietary_Habits had the strongest categorical Mutual Information, so it
-> was also retained.
->
-> Therefore, the final selected original features are Weight_kg, BMI,
-> Protein_Intake and Dietary_Habits. After encoding, these become seven
-> model columns. The training matrix contains 4,000 rows and 7 columns,
-> while the testing matrix contains 1,000 rows and 7 columns.
->
-> This notebook focuses on preprocessing and feature selection. It does
-> not contain the final classifier training or accuracy evaluation, so I
-> would calculate accuracy in the next modeling stage."
-
-------------------------------------------------------------------------
 
 # 37. Final Conclusion
 
