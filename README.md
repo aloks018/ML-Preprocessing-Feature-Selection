@@ -479,50 +479,6 @@ Run the notebook cells in sequence.
 
 ---
 
-## Option 2 — Run Python Locally
-
-Install the required libraries:
-
-```bash
-pip install pandas numpy scipy scikit-learn matplotlib
-```
-
-Then run:
-
-```bash
-python run_analysis.py
-```
-
-The execution script performs the main analysis, applies feature selection, trains the Logistic Regression demonstration model, calculates evaluation metrics, and saves analysis artifacts.
-
----
-
-# 12. Key Project Findings
-
-The analysis leads to several important conclusions:
-
-1. `Patient_ID` is an identifier and is not used as a predictive feature.
-2. Recommendation-derived columns are excluded to reduce the risk of target leakage.
-3. Statistical feature-selection methods are used instead of selecting variables arbitrarily.
-4. Strongly correlated numerical variables are checked for redundancy.
-5. The final feature set is reduced to four meaningful original predictors.
-6. `Dietary_Habits` is retained through the categorical information-selection rule.
-7. The final selected dataset is substantially smaller and more interpretable than the original feature space.
-
----
-
-# 13. Important Project Limitation
-
-This repository primarily focuses on:
-
-**Preprocessing + Feature Selection + ML-ready Dataset Preparation + Model Demonstration**
-
-It should therefore be viewed as a preprocessing and analytical foundation for a personalized diet recommendation system rather than as a clinically validated dietary decision system.
-
-Predictions from the machine-learning component should not be interpreted as medical advice.
-
----
-
 # 14. Project Links
 
 # Project Links
@@ -540,6 +496,10 @@ https://colab.research.google.com/drive/1xCTkheKnvXF7S1C3v95MANRvb4mI-mrg?usp=sh
 https://www.kaggle.com/datasets/ziya07/personalized-medical-diet-recommendations-dataset
 
 
+
+
+
+
 # 15. Author
 
 **Alok Singh**
@@ -550,7 +510,6 @@ https://www.kaggle.com/datasets/ziya07/personalized-medical-diet-recommendations
 
 **Enrollment No.: CSJMA25000006137**
 
-This is an **individual project completed by one member**.
 
 
 ## Conclusion
