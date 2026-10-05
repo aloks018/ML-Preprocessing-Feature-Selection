@@ -6,16 +6,17 @@ A machine learning project focused on **data preprocessing, statistical feature 
 
 ## Student Details
 
-| Particular          | Details                                                  |
-| ------------------- | -------------------------------------------------------- |
-| **Name**            | **Alok Singh** 
-                        ** Amrita Mishra **
-                        ** Gauri Tripathi **                                      |
-| **Course**          | **MSc Mathematics with AI and Data Science**             |
-| **Roll No.**        | **25225100002**                                          |
-| **Enrollment No.**  | **CSJMA25000006137**                                    
-| **Project Domain**  | Machine Learning, Data Preprocessing & Feature Selection |
-| **Target Variable** | `Recommended_Meal_Plan`                                  |
+| ##  Student Details
+
+| Particular | Details |
+|---|---|
+| **Name** | Alok Singh |
+| **Team Members** | Amrita Mishra, Gauri Tripathi |
+| **Course** | MSc Mathematics with AI and Data Science |
+| **Roll No.** | 25225100002 |
+| **Enrollment No.** | CSJMA25000006137 |
+| **Project Domain** | Machine Learning, Data Preprocessing & Feature Selection |
+| **Target Variable** | `Recommended_Meal_Plan` |
 
 ---
 
