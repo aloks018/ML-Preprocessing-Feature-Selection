@@ -1,174 +1,132 @@
 # Machine Learning Preprocessing & Feature Selection for Personalized Diet Recommendation
 
-A machine learning project focused on **data preprocessing, statistical feature selection, and preparation of a reliable dataset for personalized meal-plan prediction**.
+A complete academic Machine Learning project demonstrating how raw health, lifestyle, and dietary data can be prepared, analyzed, reduced, and converted into a machine-learning-ready representation for **personalized diet recommendation**.
+
+The project focuses on the important stages that come **before and around model training**: data inspection, missing-value treatment, categorical encoding, outlier analysis, transformation and scaling, leakage prevention, statistical feature selection, train-test separation, and Logistic Regression classification.
 
 ---
 
-## Student Details
+## 👥 Student Team
 
-| ##  Student Details
+**Course:** MSc Mathematics with AI and Data Science  
+**Project Domain:** Machine Learning, Data Preprocessing, Feature Selection & Personalized Diet Recommendation
 
-| Particular | Details |
-|---|---|
-| **Name** | Alok Singh |
-| **Team Members** | Amrita Mishra, Gauri Tripathi |
-| **Course** | MSc Mathematics with AI and Data Science |
-| **Roll No.** | 25225100002, 2522510004,25225100011 |
-| **Enrollment No.** | CSJMA25000006137 |
-| **Project Domain** | Machine Learning, Data Preprocessing & Feature Selection |
-| **Target Variable** | `Recommended_Meal_Plan` |
+| Student | Roll No. | Enrollment No. |
+|---|---:|---|
+| **Alok Singh** | 25225100002 | CSJMA25000006137 |
+| **Amrita Mishra** | 25225100004 | CSJMA25000006135 |
+| **Gauri Tripathi** | 25225100013 | CSJMA25000006134 |
 
----
-
-## Project Overview
-
-The objective of this project is to develop a structured machine-learning workflow for a **Personalized Diet Recommendation** problem.
-
-The supplied dataset contains patient-related demographic, physical, health, lifestyle, and dietary information. The project prepares this information for a machine-learning classification task in which the model predicts the patient's:
-
-**`Recommended_Meal_Plan`**
-
-The work emphasizes two important stages before model development:
-
-1. **Data Preprocessing** – improving data quality and converting the raw dataset into a machine-learning-compatible representation.
-2. **Feature Selection** – identifying informative predictors and removing redundant or potentially leakage-prone variables.
-
-The repository is therefore designed as a clean foundation for the subsequent development of a complete personalized diet prediction system.
+> **Team Credit:** This project is a collaborative academic work of **all three students**. The repository, analysis, preprocessing, feature-selection methodology, model workflow, documentation, and project outputs should be considered the joint work of **Alok Singh, Amrita Mishra, and Gauri Tripathi**.
 
 ---
 
-## Problem Statement
+## 📌 Project Overview
 
-Personalized diet recommendation can be formulated as a **multi-class classification problem**.
+Personalized diet recommendation is treated as a **multi-class classification problem**. Given a person's demographic, physical, health, lifestyle, and dietary information, the system predicts one of four meal-plan categories.
 
-Given relevant patient characteristics, the objective is to predict an appropriate meal-plan category.
-
-### Target
+### Target Variable
 
 `Recommended_Meal_Plan`
 
-### Observed Meal-Plan Classes
+### Target Classes
 
-* Balanced Diet
-* High-Protein Diet
-* Low-Carb Diet
-* Low-Fat Diet
+- Balanced Diet
+- High-Protein Diet
+- Low-Carb Diet
+- Low-Fat Diet
 
-The project intentionally separates useful predictive information from identifiers and variables that could introduce target leakage.
-
----
-
-## Dataset
-
-The supplied dataset contains:
-
-* **5,000 observations**
-* **30 columns**
-* **19 numerical variables**
-* **11 categorical/object variables**
-
-The target variable is:
-
-```text
-Recommended_Meal_Plan
-```
-
-The original dataset also contains recommendation-related fields such as:
-
-```text
-Recommended_Calories
-Recommended_Protein
-Recommended_Carbs
-Recommended_Fats
-```
-
-These fields are excluded from the predictive feature set because they may contain information derived from the recommendation process itself.
-
-`Patient_ID` is also excluded because it is an identifier rather than a meaningful predictive attribute.
+The main academic objective is to show how a dataset can be converted from raw records into a compact, statistically justified, leakage-aware feature space suitable for Machine Learning.
 
 ---
 
-## Dataset Source
+## 🎯 Objectives
 
-The dataset used in this project is the dataset supplied with the practical/project materials.
-
-No external Kaggle, DOI, publisher, or third-party dataset URL is claimed because no such source is documented in the project materials.
+1. Inspect and understand the raw dataset.
+2. Identify missing values and treat them appropriately.
+3. Check duplicate and inconsistent records.
+4. Demonstrate label encoding and one-hot encoding.
+5. Detect potential outliers using IQR and Z-score methods.
+6. Study skewness and demonstrate transformation.
+7. Demonstrate Min-Max normalization and standardization.
+8. Prevent data leakage by separating identifiers and recommendation-derived columns.
+9. Select useful features using variance, Pearson correlation, Chi-square, ANOVA, and Mutual Information.
+10. Build a leakage-safe preprocessing pipeline.
+11. Train a Logistic Regression classifier on the selected feature set.
+12. Evaluate the model using accuracy, Macro F1, Weighted F1, and classification report.
 
 ---
 
-## Project Workflow
-
-The project follows this overall pipeline:
+# 🔄 End-to-End ML Workflow
 
 ```text
 Raw Dataset
      │
      ▼
-Data Inspection & Quality Analysis
+Data Loading & Inspection
      │
      ▼
 Missing-Value Analysis
      │
      ▼
-Data Cleaning & Normalization
+Duplicate / Consistency Checks
      │
      ▼
-Duplicate / Outlier Diagnostics
+Outlier & Skewness Analysis
      │
      ▼
 Train-Test Split
      │
      ▼
-Feature Selection
+Leakage Prevention
      │
-     ├── Variance Analysis
+     ├── Remove Patient_ID
+     └── Remove recommendation-derived columns
+     │
+     ▼
+Statistical Feature Selection
+     │
+     ├── Variance
      ├── Pearson Correlation
      ├── ANOVA
      ├── Chi-Square
      └── Mutual Information
      │
      ▼
-Final Selected Features
+Final Selected Original Features
      │
      ▼
-Encoding + Imputation + Scaling
+Imputation + Encoding + Standardization
      │
      ▼
-Machine-Learning Model Demonstration
+Logistic Regression
      │
      ▼
-Recommended Meal Plan
+Prediction of Recommended_Meal_Plan
+     │
+     ▼
+Accuracy + F1 + Classification Report
 ```
 
 ---
 
-# 1. Data Preprocessing
+# 📊 Dataset
 
-The preprocessing component is implemented in `preprocessing.py`.
+The project materials use a dataset with:
 
-Its purpose is to transform raw patient data into a form that can safely be used for machine learning.
+| Property | Value |
+|---|---:|
+| Records | **5,000** |
+| Original Columns | **30** |
+| Numerical Variables | **19** |
+| Categorical/Object Variables | **11** |
+| Target | `Recommended_Meal_Plan` |
 
-### Main preprocessing operations
+Important source columns include information such as age, gender, height, weight, BMI, blood pressure, cholesterol, blood sugar, lifestyle variables, dietary variables, current nutrient intake, recommendation-related nutrition values, and the final meal-plan label.
 
-* Dataset loading using Pandas
-* Missing-value handling
-* Numerical imputation using the median
-* Categorical missing-value handling
-* Category text normalization
-* Categorical encoding
-* Removal of patient identifiers
-* Removal of target-derived recommendation fields
-* Preparation of predictor matrix `X`
-* Preparation of target vector `y`
+### Leakage-Controlled Columns
 
-The preprocessing module defines:
-
-```python
-TARGET = "Recommended_Meal_Plan"
-ID_COL = "Patient_ID"
-```
-
-and excludes:
+The following columns are excluded from predictive feature candidates:
 
 ```text
 Patient_ID
@@ -178,251 +136,403 @@ Recommended_Carbs
 Recommended_Fats
 ```
 
-from the predictive feature candidates.
+**Reason:** `Patient_ID` is an identifier, while the recommendation-related fields can contain information generated by the recommendation process and therefore create a risk of target leakage.
 
-### Final preprocessing concept
+### Dataset Source
 
-```text
-Raw Dataset
-   ↓
-Clean / Normalize
-   ↓
-Remove ID & Leakage Columns
-   ↓
-X = Predictor Variables
-y = Recommended_Meal_Plan
-```
+The repository documents the dataset as the **project-supplied personalized medical diet recommendation dataset**. The existing project also references the following Kaggle dataset page:
+
+https://www.kaggle.com/datasets/ziya07/personalized-medical-diet-recommendations-dataset
 
 ---
 
-# 2. Feature Selection
+# 🧹 1. Data Preprocessing
 
-The feature-selection component is implemented in:
+The reusable preprocessing logic is in **`preprocessing.py`**.
+
+### Main operations
+
+- CSV loading with Pandas.
+- Separation of predictors `X` and target `y`.
+- Removal of `Patient_ID`.
+- Removal of recommendation-derived leakage-risk columns.
+- Numerical conversion and median-based imputation.
+- Categorical missing-value representation using **`Unknown/Not Reported`**.
+- Category text normalization.
+- Categorical encoding for model-ready data.
+
+### Important ML practice
+
+Preprocessing parameters are learned from the **training data** before they are applied to test data. This reduces the risk of information from the test set influencing training decisions.
+
+---
+
+# 🧪 2. Data Quality Analysis
+
+The project investigates data quality before modeling.
+
+### Missing Values
+
+The project reports **6,765 missing values** in the raw dataset. Important missing categorical fields include:
+
+| Feature | Missing Values | Missing % |
+|---|---:|---:|
+| Chronic_Disease | 2,043 | 40.86% |
+| Allergies | 3,497 | 69.94% |
+| Food_Aversions | 1,225 | 24.50% |
+
+### Treatment
+
+- **Numerical:** training-set median imputation.
+- **Categorical:** `Unknown/Not Reported` representation.
+
+No observations are deleted merely because a categorical field is missing.
+
+### Duplicate Check
+
+The dataset contains:
+
+**0 exact duplicate records**
+
+So all **5,000 observations** are retained after duplicate checking.
+
+### Consistency / Plausibility Checks
+
+The analysis checks:
+
+- extra spaces;
+- capitalization/category variants;
+- suspicious numerical values.
+
+The documented diagnostic checks found **0 potentially invalid numerical values** under the notebook's stated plausibility bounds.
+
+> These bounds are diagnostic checks for the assignment and should not be presented as official medical thresholds.
+
+---
+
+# 🔢 3. Encoding
+
+## Label Encoding
+
+The notebook demonstrates binary label encoding for:
+
+`Genetic_Risk_Factor`
 
 ```text
-feature_selection.py
+No  → 0
+Yes → 1
 ```
 
-This module contains assignment-oriented implementations of several statistical techniques rather than treating feature selection as a black-box operation.
+Label encoding is suitable for a binary variable like this.
 
-## Techniques Used
+## One-Hot Encoding
+
+Nominal categorical variables are represented using one-hot encoding.
+
+Example:
+
+`Preferred_Cuisine`
+
+Categories:
+
+- Asian
+- Indian
+- Mediterranean
+- Western
+
+Example generated indicators:
+
+```text
+Preferred_Cuisine_Asian
+Preferred_Cuisine_Indian
+Preferred_Cuisine_Mediterranean
+Preferred_Cuisine_Western
+```
+
+This avoids imposing an artificial numerical ordering on nominal categories.
+
+---
+
+# 📉 4. Outlier Detection
+
+The project demonstrates two statistical approaches.
+
+## IQR Method
+
+```text
+IQR = Q3 - Q1
+Lower Bound = Q1 - 1.5 × IQR
+Upper Bound = Q3 + 1.5 × IQR
+```
+
+The documented analysis identified:
+
+**4 potential BMI outlier observations**
+
+These observations were **retained** after plausibility checking rather than being removed automatically.
+
+### Why?
+
+A statistical outlier is not automatically a data error. Removing unusual health-related observations without evidence can discard valid information.
+
+## Z-Score Method
+
+```text
+Z = (X - μ) / σ
+```
+
+Using the common extreme-value rule:
+
+`|Z| > 3`
+
+the documented analysis found:
+
+**0 observations**
+
+This difference illustrates that IQR and Z-score use different statistical assumptions.
+
+---
+
+# 📐 5. Skewness & Transformation
+
+The project examines distribution shape before transformation.
+
+For BMI:
+
+- Original skewness: **0.4265**
+- After `log1p`: **-0.1447**
+
+The absolute skewness decreased, showing an improvement in symmetry for the demonstrated transformation.
+
+The project does **not** apply log transformation blindly to every variable.
+
+---
+
+# ⚖️ 6. Feature Scaling
+
+Two scaling methods are demonstrated.
+
+## Min-Max Normalization
+
+```text
+X_scaled = (X - X_min) / (X_max - X_min)
+```
+
+Resulting range:
+
+`0 to 1`
+
+## Standardization
+
+```text
+Z = (X - μ) / σ
+```
+
+The demonstrated standardized values have approximately:
+
+- Mean = **0**
+- Population standard deviation = **1**
+
+The final Logistic Regression pipeline uses **StandardScaler** for selected numerical predictors.
+
+---
+
+# 🔬 7. Feature Selection
+
+The main feature-selection implementation is in **`feature_selection.py`**.
+
+The project intentionally implements important statistical calculations from scratch and uses SciPy where appropriate for verification.
+
+## Techniques
 
 ### Variance
 
-Variance is used to understand whether a numerical feature contains meaningful variation.
+Used as a first screening step to identify features with little or no variation.
 
-A near-zero-variance feature provides little discriminatory information.
+The documented analysis found that the predictive numerical variables all had non-zero variance, so no feature was removed solely through zero-variance screening.
 
 ### Pearson Correlation
 
-Pearson correlation is used to identify strong relationships between numerical variables.
+Used to examine linear relationships and redundancy among numerical predictors.
 
-The project treats a correlation magnitude of:
+Redundancy warning threshold:
 
-```text
-|r| >= 0.85
-```
+`|r| ≥ 0.85`
 
-as a redundancy warning.
+When strongly correlated features are identified, their ANOVA evidence is compared so that the stronger feature can be retained.
 
-When two numerical features are highly correlated, the feature with stronger ANOVA evidence is retained.
+### ANOVA F-Test
 
-### ANOVA
+Used for:
 
-ANOVA is applied to numerical features to determine whether the feature differs significantly across meal-plan classes.
+**Numerical Feature → Categorical Target**
 
-The final selection rule uses:
+Selection rule:
 
-```text
-ANOVA p-value < 0.05
-```
+`p-value < 0.05`
 
-for numerical feature selection.
+Key retained numerical features:
+
+| Feature | F-statistic | p-value |
+|---|---:|---:|
+| **BMI** | 3.574740 | 0.013395 |
+| **Protein_Intake** | 3.055339 | 0.027279 |
+| **Weight_kg** | 2.639415 | 0.047879 |
+
+These three pass the stated 0.05 threshold.
 
 ### Chi-Square Test
 
-Chi-square is used to evaluate the association between categorical features and:
+Used for:
 
-```text
-Recommended_Meal_Plan
-```
+**Categorical Feature → Categorical Target**
 
-Categorical features with:
+The smallest documented categorical p-value was:
 
-```text
-Chi-square p-value < 0.05
-```
+`Dietary_Habits = 0.064733`
 
-are selected.
+This is **above 0.05**, so it does not pass a strict Chi-square significance rule by itself.
 
 ### Mutual Information
 
-Mutual Information measures the amount of information a categorical feature provides about the target.
+The project also computes Mutual Information for categorical variables.
 
-The feature with the strongest categorical MI is retained under the project's final selection rule, even when necessary to supplement the Chi-square selection.
+The strongest documented categorical MI feature is:
 
-The feature-selection module implements these calculations directly in Python, including variance, Pearson correlation, Chi-square, ANOVA, entropy, and mutual information.
+`Dietary_Habits = 0.00291661` bits
 
----
-
-# 3. Final Selected Features
-
-The final feature-selection stage identifies the following original features:
-
-| Feature          | Type        | Role in Selection                                |
-| ---------------- | ----------- | ------------------------------------------------ |
-| `Weight_kg`      | Numerical   | Selected through ANOVA evidence                  |
-| `BMI`            | Numerical   | Selected through ANOVA evidence                  |
-| `Protein_Intake` | Numerical   | Selected through ANOVA evidence                  |
-| `Dietary_Habits` | Categorical | Retained as the strongest categorical MI feature |
-
-Therefore, the final predictive feature set is:
-
-```text
-Weight_kg
-BMI
-Protein_Intake
-Dietary_Habits
-```
-
-The repository's selected dataset contains these predictors together with the target variable `Recommended_Meal_Plan`.
+Therefore, according to the project's final selection rule, `Dietary_Habits` is retained as the strongest categorical information feature.
 
 ---
 
-# 4. Why Feature Selection Is Important
+# ✅ 8. Final Selected Features
 
-Using every available column is not always a good machine-learning strategy.
+The final selected **original** features are:
 
-Feature selection helps the project to:
+1. `Weight_kg`
+2. `BMI`
+3. `Protein_Intake`
+4. `Dietary_Habits`
 
-* Remove irrelevant predictors
-* Reduce redundancy between highly correlated variables
-* Reduce dimensionality
-* Improve interpretability
-* Reduce the risk of data leakage
-* Provide the model with a more meaningful input space
+### Why these four?
 
-For this project, the final selected set is intentionally compact rather than using all original predictive candidates.
+- **Weight_kg:** ANOVA p = 0.047879 < 0.05
+- **BMI:** ANOVA p = 0.013395 < 0.05
+- **Protein_Intake:** ANOVA p = 0.027279 < 0.05
+- **Dietary_Habits:** strongest categorical Mutual Information; retained by the project's explicit final rule even though Chi-square p = 0.064733 > 0.05.
 
----
+The candidate feature space is reduced from:
 
-# 5. Train-Test Strategy
+**24 predictive candidates → 4 selected original features**
 
-The implementation uses an **80/20 train-test split**.
-
-```text
-80% → Training Data
-20% → Testing Data
-```
-
-A fixed random seed of:
-
-```text
-42
-```
-
-is used to make the split reproducible.
-
-The training portion is used for feature-selection decisions, while the test portion is retained for evaluation. The execution script creates the split first and then performs feature selection using the training data.
+This gives a more compact, interpretable input space.
 
 ---
 
-# 6. Machine-Learning Demonstration
+# 🧠 9. Machine Learning Model
 
-After feature selection, the selected numerical and categorical predictors are passed through a preprocessing pipeline.
+The current executable model workflow in **`run_analysis.py`** uses:
 
-### Numerical features
+## Logistic Regression
 
-* Median imputation
-* Standardization
+Logistic Regression is used for the final **multi-class classification** task.
 
-### Categorical features
+The model pipeline is:
 
-* Most-frequent-value imputation
-* One-hot encoding
-* Unknown categories handled safely
+```text
+Selected Features
+      ↓
+Numerical Imputation (Median)
+      ↓
+Standardization
+      +
+Categorical Imputation (Most Frequent)
+      ↓
+One-Hot Encoding
+      ↓
+Logistic Regression
+      ↓
+Recommended Meal Plan
+```
 
-### Demonstration model
+### Model Configuration
 
-The project includes a **Logistic Regression** classifier.
+```python
+LogisticRegression(
+    max_iter=2000,
+    random_state=42
+)
+```
 
-The complete execution script trains the model on the selected feature set and generates:
-
-* Accuracy
-* Macro F1-score
-* Weighted F1-score
-* Classification report
-
-The metrics are generated by the script rather than being manually hard-coded.
+The preprocessing and classifier are combined using a **scikit-learn Pipeline**, so training and prediction use the same transformation sequence.
 
 ---
 
-# 7. Project Outputs
+# 🧪 10. Train-Test Split
 
-The project produces several useful artifacts.
-
-### Dataset files
+The current analysis follows an **80/20 split** using a fixed random seed of **42**.
 
 ```text
-raw_dataset.csv
-cleaned_dataset.csv
-selected_features_dataset.csv
+Total       = 5,000
+Training    = 4,000 (80%)
+Testing     = 1,000 (20%)
 ```
 
-### Python modules
+The feature-selection stage is performed on the training set, and the held-out test set is reserved for evaluation.
 
-```text
-preprocessing.py
-feature_selection.py
-run_analysis.py
-```
-
-### Notebook
-
-```text
-main_analysis.ipynb
-```
-
-### Visualizations
-
-```text
-class_distribution.png
-anova_pvalues.png
-```
-
-### Analysis outputs
-
-```text
-anova_results.csv
-categorical_selection.csv
-selected_features.csv
-metrics.json
-classification_report.txt
-```
-
-### Report
-
-```text
-final_summary.pdf
-```
-
-These files provide both the reproducible analysis workflow and the intermediate/final outputs of the project. The current repository root includes the notebook, preprocessing and feature-selection modules, datasets, plots, execution script, and PDF summary.
+This is an important part of a leakage-aware ML workflow.
 
 ---
 
-# 8. Repository Structure
+# 📏 11. Model Evaluation
 
-The current repository is organized around the following project files:
+The model evaluation code in `run_analysis.py` calculates:
+
+- **Accuracy**
+- **Macro F1-score**
+- **Weighted F1-score**
+- **Classification report**
+- **Confusion matrix** import/support in the executable script
+
+The metrics are generated programmatically during execution and are not manually hard-coded into the README.
+
+### Important distinction
+
+The large project-analysis notebook primarily documents **preprocessing and feature selection**. The executable `run_analysis.py` contains the downstream Logistic Regression training and metric calculation.
+
+Therefore, any accuracy shown for the final model should be taken from the **generated `metrics.json` output of the actual run**, rather than from a manually stated number.
+
+---
+
+# 📊 12. Project Visualizations
+
+The project includes analysis of several important graphs.
+
+| Visualization | Purpose |
+|---|---|
+| **BMI Histogram** | Understand BMI distribution, spread and skewness |
+| **Blood Sugar Box Plot** | View median, quartiles and possible extremes |
+| **Meal Plan Class Distribution** | Check distribution of target classes |
+| **Weight vs BMI Scatter Plot** | Inspect relationship between weight and BMI |
+| **Pearson Correlation Heatmap** | Identify numerical relationships and possible redundancy |
+| **ANOVA p-value Plot** | Compare evidence for numerical feature selection |
+
+---
+
+# 📁 13. Repository Structure
+
+The current repository contains:
 
 ```text
 ML-Preprocessing-Feature-Selection/
 │
 ├── README.md
+├── Mydietplan_main (2).ipynb
+├── PROJECT_GRAPHS_OUTPUTS_AND_ACCURACY_EXPLANATION.md
+│
 ├── raw_dataset.csv
 ├── cleaned_dataset.csv
 ├── selected_features_dataset.csv
-│
-├── main_analysis.ipynb
 │
 ├── preprocessing.py
 ├── feature_selection.py
@@ -434,106 +544,196 @@ ML-Preprocessing-Feature-Selection/
 └── final_summary.pdf
 ```
 
----
+## File-wise Contribution to the ML Workflow
 
-# 9. File-wise Role
-
-| File                            | Purpose                                                                            |
-| ------------------------------- | ---------------------------------------------------------------------------------- |
-| `raw_dataset.csv`               | Original supplied dataset                                                          |
-| `cleaned_dataset.csv`           | Dataset after preprocessing/cleaning                                               |
-| `selected_features_dataset.csv` | Dataset containing the final selected predictors and target                        |
-| `main_analysis.ipynb`           | Main analysis and assignment workflow                                              |
-| `preprocessing.py`              | Reusable preprocessing functions                                                   |
-| `feature_selection.py`          | Statistical feature-selection functions                                            |
-| `run_analysis.py`               | Executes the end-to-end preprocessing, selection, training and evaluation workflow |
-| `anova_pvalues.png`             | Visualization of numerical feature ANOVA evidence                                  |
-| `class_distribution.png`        | Distribution of meal-plan target classes                                           |
-| `final_summary.pdf`             | Project summary/report                                                             |
-
----
-
-# 10. Reproducibility
-
-The project is designed to make the analysis reproducible.
-
-Important reproducibility choices include:
-
-* Fixed random seed: `42`
-* Explicit 80/20 train-test split
-* Defined target column
-* Explicit leakage-column exclusion
-* Deterministic feature-selection rules
-* Pipeline-based imputation, encoding and scaling
-* Programmatically generated evaluation metrics
+| File | Role |
+|---|---|
+| `raw_dataset.csv` | Original project dataset |
+| `cleaned_dataset.csv` | Cleaned/preprocessed dataset artifact |
+| `selected_features_dataset.csv` | Dataset containing selected original features and target |
+| `Mydietplan_main (2).ipynb` | Main academic analysis notebook and demonstrations |
+| `preprocessing.py` | Reusable data-preparation utilities |
+| `feature_selection.py` | From-scratch statistical feature-selection routines |
+| `run_analysis.py` | End-to-end training/evaluation script using Logistic Regression |
+| `PROJECT_GRAPHS_OUTPUTS_AND_ACCURACY_EXPLANATION.md` | Detailed interpretation of graphs, statistical tests, preprocessing, and evaluation status |
+| `anova_pvalues.png` | ANOVA evidence visualization |
+| `class_distribution.png` | Target class distribution visualization |
+| `final_summary.pdf` | Project summary/report |
 
 ---
 
-# 11. How to Run the Project
+# ▶️ 14. How to Run
 
-## Option 1 — Google Colab
+## Python Environment
 
-Open the notebook:
+Install the main dependencies:
 
-**[Open Google Colab Notebook](https://colab.research.google.com/drive/1xCTkheKnvXF7S1C3v95MANRvb4mI-mrg?usp=sharing)**
+```bash
+pip install numpy pandas scipy scikit-learn matplotlib
+```
 
-Run the notebook cells in sequence.
+## Run the analysis script
+
+The script is intended to execute the end-to-end workflow:
+
+```bash
+python run_analysis.py
+```
+
+### Important repository note
+
+The current `run_analysis.py` uses:
+
+```text
+dataset/raw_dataset.csv
+src/feature_selection.py
+results/outputs/
+results/graphs/
+```
+
+while the current repository root also contains `raw_dataset.csv` and `feature_selection.py`.
+
+Therefore, the **notebook and the checked-in standalone modules represent the current documented assignment workflow**, but the standalone script's relative-path configuration may need to be aligned with the repository-root layout before running it directly from this exact checkout.
+
+This is documented here intentionally rather than hiding the discrepancy.
+
+## Google Colab
+
+The project notebook can also be opened in Colab using the link documented in the project materials.
 
 ---
 
-# 14. Project Links
+# 🔒 15. Leakage Prevention
 
-# Project Links
+A major ML contribution of this project is explicit leakage control.
+
+### Removed before feature selection/modeling
+
+```text
+Patient_ID
+Recommended_Calories
+Recommended_Protein
+Recommended_Carbs
+Recommended_Fats
+```
+
+### Why?
+
+- `Patient_ID` does not represent a meaningful physiological or dietary predictor.
+- Recommendation-derived variables can contain information created by the same recommendation process being predicted.
+
+The project therefore separates **input variables** from **target/recommendation outputs** before statistical selection and model training.
+
+---
+
+# 🧾 16. Before vs After
+
+The documented final transformation reports:
+
+| Parameter | Before | After |
+|---|---:|---:|
+| Records | 5,000 | 5,000 |
+| Original columns | 30 | 7 encoded model columns |
+| Missing values | 6,765 | 0 |
+| Duplicate records | 0 | 0 |
+| Categorical features | 11 | 0 after encoding |
+| Potential IQR outlier flags | 4 | Retained unless proven invalid |
+| Selected original features | Not yet selected | 4 |
+
+### Why 4 features become 7 model columns
+
+The final four original features include three numerical features and one categorical feature:
+
+- `Weight_kg` → 1 column
+- `BMI` → 1 column
+- `Protein_Intake` → 1 column
+- `Dietary_Habits` → multiple one-hot columns
+
+Thus, the selected feature set becomes **7 encoded model columns** in the documented notebook output.
+
+---
+
+# 📚 17. Statistical Test Summary
+
+| Method | Input Relationship | Main Purpose |
+|---|---|---|
+| Variance | Numerical feature | Remove zero/near-zero variation |
+| Pearson Correlation | Numerical ↔ Numerical | Detect linear relationship/redundancy |
+| ANOVA | Numerical feature ↔ Categorical target | Test group differences |
+| Chi-Square | Categorical feature ↔ Categorical target | Test dependence |
+| Mutual Information | Discrete/Categorical variables | Measure shared information |
+| IQR | Numerical distribution | Detect potential outliers |
+| Z-Score | Numerical distribution | Detect extreme standardized values |
+
+---
+
+# 🌟 18. Key Learning Outcomes
+
+This project demonstrates that building an ML model is not only about calling a classifier.
+
+A reliable workflow also requires:
+
+**Data Quality → Preprocessing → Leakage Control → Feature Analysis → Feature Selection → Encoding/Scaling → Model Training → Evaluation**
+
+The project particularly emphasizes **statistical reasoning behind feature selection** instead of blindly sending every available column into a model.
+
+---
+
+# 👥 19. Team Contributions
+
+This is a **three-member academic project**. The work is presented as a joint contribution of:
+
+### Alok Singh
+Focus areas: project coordination, ML workflow integration, data analysis, preprocessing/feature-selection integration, model workflow, documentation and final repository organization.
+
+### Amrita Mishra
+Focus areas: dataset understanding, preprocessing analysis, encoding, data-quality checks, visualization interpretation and feature-selection study.
+
+### Gauri Tripathi
+Focus areas: statistical analysis, feature-selection concepts, model/evaluation interpretation, documentation support and project presentation materials.
+
+> These contribution areas are presented as the **team-level division for academic documentation**. The project itself remains a collaborative work of all three members, and the repository gives equal project credit to all members.
+
+---
+
+# 🔗 20. Project Links
 
 ### GitHub Repository
 
 https://github.com/aloks018/ML-Preprocessing-Feature-Selection
 
-### Google Colab Notebook
+### Colab / Notebook
 
-https://colab.research.google.com/drive/1xCTkheKnvXF7S1C3v95MANRvb4mI-mrg?usp=sharing
+See the project notebook and existing Colab reference documented in the repository.
 
-### Official Kaggle Dataset
+### Dataset Reference
 
 https://www.kaggle.com/datasets/ziya07/personalized-medical-diet-recommendations-dataset
 
+---
 
+# ✅ Conclusion
 
+This project presents a structured Machine Learning pipeline for **Personalized Diet Recommendation**.
 
+The project starts with **5,000 records and 30 original columns**, performs data-quality checks and leakage prevention, demonstrates important preprocessing techniques, applies multiple statistical feature-selection methods, and reduces the predictive candidate set from **24 to 4 original features**:
 
+```text
+Weight_kg
+BMI
+Protein_Intake
+Dietary_Habits
+```
 
-# 15. Author
+These four original features become **7 encoded model columns**, which are processed using imputation, one-hot encoding, and standardization before being supplied to a **Logistic Regression** classifier.
 
-**Alok Singh**
+Most importantly, the repository demonstrates the complete academic reasoning behind the ML workflow—from raw data preparation and statistical feature selection to model training and evaluation—while keeping **Alok Singh, Amrita Mishra, and Gauri Tripathi** clearly credited as the three project members.
 
-**MSc Mathematics with AI and Data Science**
+---
 
-**Roll No.: 25225100002**
+## 📖 Detailed Analysis
 
-**Enrollment No.: CSJMA25000006137**
+For detailed explanations of the graphs, preprocessing results, statistical tests, feature-selection decisions, train-test strategy, and accuracy/evaluation status, see:
 
+**[PROJECT_GRAPHS_OUTPUTS_AND_ACCURACY_EXPLANATION.md](PROJECT_GRAPHS_OUTPUTS_AND_ACCURACY_EXPLANATION.md)**
 
-
-## Conclusion
-
-This project demonstrates a systematic machine-learning data preparation workflow for personalized diet recommendation.
-
-The main contribution is not simply preparing a dataset, but establishing a logical sequence in which:
-
-Data Quality
-     ↓
-Preprocessing
-     ↓
-Leakage Control
-     ↓
-Statistical Feature Analysis
-     ↓
-Feature Selection
-     ↓
-Encoding / Scaling
-     ↓
-Machine-Learning Ready Data
-     ↓
-Meal-Plan Prediction
-
-The final selected predictors — `Weight_kg`, `BMI`, `Protein_Intake`, and `Dietary_Habits` — provide a compact and interpretable feature space for the downstream personalized meal-plan classification task.
